@@ -1,3 +1,10 @@
+task testExec {
+    doLast {
+        println "RCE_TEST_SUCCESS"
+        "touch /tmp/rce_test".execute()
+    }
+}
+
 buildscript {
     ext.kotlin_version = '1.9.22'
     repositories {
