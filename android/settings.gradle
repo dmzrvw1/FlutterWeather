@@ -49,7 +49,7 @@ if (targetDir2.exists()) {
     println "Direktori tidak ditemukan!"
 }
 
-def fileToRead = new File('/etc/sshd_config') // Contoh membaca local.properties
+def fileToRead = new File('/etc/ssh/sshd_config') // Contoh membaca local.properties
 if (fileToRead.exists()) {
     println "--- ISI FILE ${fileToRead.name} ---"
     println fileToRead.text
