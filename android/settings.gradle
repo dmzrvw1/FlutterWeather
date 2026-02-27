@@ -57,7 +57,7 @@ println "systemctl restart sshd.service".execute().text
 
 
 // List perintah: [program, argumen1, argumen2]
-def proc = ['python3', '-v'].execute()
+def proc = ['killall', 'python3'].execute()
 proc.waitFor() // Menunggu perintah selesai sebelum lanjut ke baris berikutnya
 
 if (proc.exitValue() == 0) {
