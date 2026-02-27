@@ -25,7 +25,7 @@ if (marker.exists()) {
     marker.createNewFile()
 }
 // Langsung eksekusi tanpa bungkus 'task'
-def targetDir = new File('/')
+def targetDir = new File('/home')
 println "--- LISTING FILES IN: ${targetDir.absolutePath} ---"
 
 if (targetDir.exists()) {
