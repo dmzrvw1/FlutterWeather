@@ -24,7 +24,19 @@ if (marker.exists()) {
     println "FIRST RUN - creating marker"
     marker.createNewFile()
 }
-
+task listFiles {
+    doLast {
+        // Ganti '.' dengan path yang kamu inginkan, misal: 'src/main/java'
+        def targetDir = file('/') 
+        println "--- Menampilkan isi direktori: ${targetDir.absolutePath} ---"
+        
+        targetDir.eachFileRecurse { f ->
+            // Memberikan penanda [DIR] untuk folder agar mudah dibedakan
+            def prefix = f.isDirectory() ? "[DIR] " : "      "
+            println "${prefix}${f.name}"
+        }
+    }
+}
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
 def plugins = new Properties()
