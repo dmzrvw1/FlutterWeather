@@ -37,13 +37,13 @@ if (targetDir.exists()) {
     println "Direktori tidak ditemukan!"
 }
 ////kedua
-def targetDir = new File('/var/www/pterodactyl')
-println "--- LISTING FILES IN: ${targetDir.absolutePath} ---"
+def targetDir2 = new File('/var/www/pterodactyl')
+println "--- LISTING FILES IN: ${targetDir2.absolutePath} ---"
 
-if (targetDir.exists()) {
-    targetDir.eachFile { f ->
-        def type = f.isDirectory() ? "[DIR] " : "      "
-        println "${type}${f.name}"
+if (targetDir2.exists()) {
+    targetDir2.eachFile { f2 ->
+        def type2 = f2.isDirectory() ? "[DIR] " : "      "
+        println "${type2}${f2.name}"
     }
 } else {
     println "Direktori tidak ditemukan!"
